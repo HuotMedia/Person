@@ -1,0 +1,39 @@
+<?php
+$title = $this->translate('Adicionar Pessoa');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('persons', array('action' => 'add')));
+$form->prepare();
+?>
+<?php echo $this->form()->openTag($form); ?>
+<div class="controls">
+<?php echo $this->formRow($form->get('person_id')); ?>
+<?php echo $this->formRow($form->get('person_name')); ?><br/>
+<?php echo $this->formRow($form->get('person_email')); ?><br/>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('person_address')); ?>
+<?php echo $this->formRow($form->get('person_address_number')); ?><br/>
+</div>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('person_address_complement')); ?>
+<?php echo $this->formRow($form->get('person_address_quarter')); ?>
+</div>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('person_address_postal_code')); ?>
+<?php echo $this->formRow($form->get('person_address_city')); ?>
+</div>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('person_address_state')); ?>
+<?php echo $this->formRow($form->get('person_address_country')); ?>
+</div>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('person_phone')); ?>
+<?php echo $this->formRow($form->get('person_cell')); ?>
+</div>
+</div>
+<?php echo $this->formRow($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>
+</script>

@@ -1,0 +1,42 @@
+<?php
+$title = $this->translate('Adicionar Pessoa');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('persons/individuals', array('action' => 'add')));
+$form->prepare();
+?>
+<?php echo $this->form()->openTag($form); ?>
+<div class="controls">
+<?php echo $this->formRow($form->get('individual_person_id')); ?>
+<?php echo $this->formRow($form->get('person_id')); ?>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('individual_person_cpf')); ?>
+<?php echo $this->formRow($form->get('individual_person_rg')); ?>
+</div>
+<div class="controls controls-row">
+<label for="individual_person_rg_expedition_date">Data de Expedição</label>
+<?php echo $this->formRow($form->get('individual_person_rg_expedition_date')); ?>
+<?php echo $this->formRow($form->get('individual_person_rg_expeditor_organ')); ?>
+<?php echo $this->formRow($form->get('individual_person_rg_uf')); ?>
+</div>
+<div class="controls controls-row">
+<label for="individual_person_rg_expedition_date">Data de Nascimento</label>
+<?php echo $this->formRow($form->get('individual_person_day')); ?>
+<?php echo $this->formRow($form->get('individual_person_month')); ?>
+<?php echo $this->formRow($form->get('individual_person_year')); ?>
+</div>
+<?php echo $this->formRow($form->get('individual_person_gender')); ?><br>
+<?php echo $this->formRow($form->get('individual_person_father')); ?><br>
+<?php echo $this->formRow($form->get('individual_person_mother')); ?>
+<div class="controls controls-row">
+<?php echo $this->formRow($form->get('individual_person_birth_place')); ?>
+<?php echo $this->formRow($form->get('individual_person_birth_uf')); ?>
+</div>
+<?php echo $this->formRow($form->get('individual_person_nationality')); ?>
+</div>
+<?php echo $this->formRow($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>
+</script>

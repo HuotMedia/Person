@@ -1,0 +1,45 @@
+<?php
+    $title = $this->translate('Cidades');
+    $this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<table class="table table-bordered">
+    <tr>
+        <th class="">Cidade</th>
+        <th class="span2">Estado</th>
+        <th class="span1">Ações</th>
+    </tr>
+    <?php if (0 !== count($this->cities)):?>
+    <?php foreach ($this->cities as $city) : ?>
+    <tr>
+        <td><?php echo $this->escapeHtml($city->getCityName());?></td>
+        <td><?php echo $this->escapeHtml($city->getStateName());?></td>
+        <td>
+            <div class="btn-group">
+                <a class="btn btn-small" href="<?php echo $this->url('localization/cities',
+                    array('action'=>'edit', 'id' => $city->getCityId()));?>"><i class="icon-edit"></i></a>
+                <a class="btn btn-small" href="<?php echo $this->url('localization/cities',
+                    array('action'=>'delete', 'id' => $city->getCityId()));?>"><i class="icon-remove"></i></a>
+            </div>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+    <?php else: ?>
+    <tr>
+    	<td colspan="3">Nenhum registro encontrado no banco de dados.</td>
+    </tr>
+    <?php endif; ?>
+</table>
+<div align="center">
+	<?php 
+		$paginationInfo = $this->placeholder('localization-pagination');
+		if (!isset($paginationInfo->route)) {
+			$paginationInfo->route  = 'localization/cities';
+			$paginationInfo->params = array();
+		}
+		echo $this->paginationControl($this->cities, 'Sliding', 'localization/pagination')
+	?>
+</div>
+<div class="btn-group">
+    <a class="btn" href="<?php echo $this->url('localization/cities', array('action'=>'add'));?>"><?php echo $this->translate('New'); ?></a>
+</div> 

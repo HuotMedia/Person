@@ -1,0 +1,21 @@
+<?php
+$title = $this->translate('Delete City');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><?php echo $this->translate('Are you sure that you want to delete')?>
+    '<?php echo $this->escapeHtml($city->getCityName()); ?>'?
+</p>
+<?php
+$url = $this->url('localization/cities', array(
+    'action' => 'delete',
+    'id'     => $city_id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $city->getCityId(); ?>" />
+    <input type="submit" name="del" value="Yes" class="btn" />
+    <input type="submit" name="del" value="No" class="btn" />
+</div>
+</form>

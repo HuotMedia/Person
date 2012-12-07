@@ -1,0 +1,28 @@
+<?php
+$title = $this->translate('Editar Cidade');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'localization/cities',
+    array(
+        'action' => 'edit',
+        'id'     => $city_id,
+    )
+));
+$form->prepare();
+?>
+
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->formRow($form->get('city_id')->setValue($city_id)); ?>
+<?php echo $this->formRow($form->get('country_id')); ?>
+<?php echo $this->formRow($form->get('state_id')); ?>
+<?php echo $this->formRow($form->get('city_name')); ?>
+<div class="form-actions">
+<?php echo $this->formRow($form->get('submit')); ?>
+<?php echo $this->formRow($form->get('cancel')); ?>
+</div>
+<?php echo $this->form()->closeTag(); ?>
